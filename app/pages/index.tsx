@@ -93,6 +93,40 @@ const Index = () => {
             </View>
           </TouchableWithoutFeedback>
 
+          <TouchableWithoutFeedback
+            onPress={() => {
+              navigation.navigate('Toast');
+            }}>
+            <View style={styles.btn}>
+              <Text style={styles.font}>TOAST</Text>
+            </View>
+          </TouchableWithoutFeedback>
+
+          <TouchableWithoutFeedback
+            onPress={() => {
+              navigation.navigate('KeyBoard');
+            }}>
+            <View style={styles.btn}>
+              <Text style={styles.font}>Keyboard</Text>
+            </View>
+          </TouchableWithoutFeedback>
+
+          <TouchableWithoutFeedback
+            onPress={() => {
+              navigation.navigate('Device');
+            }}>
+            <View style={styles.btn}>
+              <Text style={styles.font}>Devices</Text>
+            </View>
+          </TouchableWithoutFeedback>
+          <TouchableWithoutFeedback
+            onPress={() => {
+              navigation.navigate('Video');
+            }}>
+            <View style={styles.btn}>
+              <Text style={styles.font}>视频</Text>
+            </View>
+          </TouchableWithoutFeedback>
           <View style={styles.btn}>
             <Text style={styles.font}>动画</Text>
           </View>

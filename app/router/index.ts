@@ -5,6 +5,10 @@ import Gesture from '../pages/gestrue';
 import RNF from '../pages/RNF';
 import WebViewCom from '../pages/webview';
 import SoundCom from '../pages/sound';
+import ToastCom from '../pages/toast';
+import KeyBoard from '../pages/KeyBoard';
+import DeviceCom from '../pages/device';
+import VideoCom from '../pages/video';
 
 const router = [
   {
@@ -72,6 +76,54 @@ const router = [
     name: 'Sound',
     title: '音频',
     component: SoundCom,
+    options: {
+      headerShown: false,
+      presentation: 'transparentModal',
+      contentStyle: {
+        backgroundColor: 'transparent',
+      },
+    },
+  },
+  {
+    name: 'Toast',
+    title: 'Toast',
+    component: ToastCom,
+    options: {
+      headerShown: false,
+      presentation: 'transparentModal',
+      contentStyle: {
+        backgroundColor: 'transparent',
+      },
+    },
+  },
+  {
+    name: 'KeyBoard',
+    title: '弹出键盘',
+    component: KeyBoard,
+    options: {
+      headerShown: false,
+      presentation: 'transparentModal',
+      contentStyle: {
+        backgroundColor: 'transparent',
+      },
+    },
+  },
+  {
+    name: 'Device',
+    title: 'Device',
+    component: DeviceCom,
+    options: {
+      headerShown: false,
+      presentation: 'transparentModal',
+      contentStyle: {
+        backgroundColor: 'transparent',
+      },
+    },
+  },
+  {
+    name: 'Video',
+    title: '视频',
+    component: VideoCom,
     options: {
       headerShown: false,
       presentation: 'transparentModal',
