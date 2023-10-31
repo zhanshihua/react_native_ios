@@ -10,7 +10,10 @@
     "test": "jest",
     "ios:pod": "cd ios && pod install",
     "build": "expo build:ios",
-    "bundle-ios": "node node_modules/react-native/local-cli/cli.js bundle --entry-file index.ios.js --platform ios --dev false --bundle-output release_ios/main.jsbundle --assets-dest release_ios/"
+    "bundle-ios": "node node_modules/react-native/local-cli/cli.js bundle --entry-file index.ios.js --platform ios --dev false --bundle-output release_ios/main.jsbundle --assets-dest release_ios/",
+    "web": "react-scripts start",
+    "build1": "react-scripts build",
+    "eject": "react-scripts eject"
   },
   "dependencies": {
     "@react-navigation/bottom-tabs": "^6.5.11",
@@ -19,6 +22,7 @@
     "expo": "^49.0.0",
     "expo-clipboard": "~4.3.1",
     "react": "18.2.0",
+    "react-dom": "^18.2.0",
     "react-native": "0.72.6",
     "react-native-device-info": "^10.11.0",
     "react-native-fs": "^2.20.0",
@@ -33,7 +37,9 @@
     "react-native-sound": "^0.11.2",
     "react-native-track-player": "^4.0.0",
     "react-native-video": "^5.2.1",
-    "react-native-webview": "^13.6.2"
+    "react-native-web": "^0.19.9",
+    "react-native-webview": "^13.6.2",
+    "react-scripts": "^5.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
@@ -46,6 +52,7 @@
     "@types/react-test-renderer": "^18.0.0",
     "babel-jest": "^29.2.1",
     "eslint": "^8.19.0",
+    "html-webpack-plugin": "^5.5.3",
     "jest": "^29.2.1",
     "metro-react-native-babel-preset": "0.76.8",
     "prettier": "^2.4.1",
@@ -55,5 +62,17 @@
   "engines": {
     "node": ">=16"
   },
-  "isSwift": true
+  "isSwift": true,
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
 }
