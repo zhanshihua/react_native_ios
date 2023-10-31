@@ -8,13 +8,16 @@
     "lint": "eslint .",
     "start": "react-native start",
     "test": "jest",
-    "ios:pod": "cd ios && pod install"
+    "ios:pod": "cd ios && pod install",
+    "build": "expo build:ios",
+    "bundle-ios": "node node_modules/react-native/local-cli/cli.js bundle --entry-file index.ios.js --platform ios --dev false --bundle-output release_ios/main.jsbundle --assets-dest release_ios/"
   },
   "dependencies": {
     "@react-navigation/bottom-tabs": "^6.5.11",
     "@react-navigation/native": "^6.1.9",
     "@react-navigation/native-stack": "^6.9.16",
     "expo": "^49.0.0",
+    "expo-clipboard": "~4.3.1",
     "react": "18.2.0",
     "react-native": "0.72.6",
     "react-native-device-info": "^10.11.0",

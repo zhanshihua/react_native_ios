@@ -18,12 +18,31 @@ import {
   SafeAreaView,
   ScrollView,
   TouchableWithoutFeedback,
+  Dimensions,
+  PixelRatio,
 } from 'react-native';
 
 import {useNavigation} from '@react-navigation/native';
 
+import * as Clipboard from 'expo-clipboard';
 const Index = () => {
+  const screenWidth = Dimensions.get('window').width;
+  let pixelRatio = PixelRatio.get();
+  const screenPxW =
+    PixelRatio.getPixelSizeForLayoutSize(screenWidth) / pixelRatio;
+  console.error(screenWidth, screenPxW, '---screenPxW');
   const navigation = useNavigation();
+  const [copiedText, setCopiedText] = React.useState('');
+
+  const copyToClipboard = async () => {
+    await Clipboard.setStringAsync('11111');
+    // fetchCopiedText();
+  };
+
+  const fetchCopiedText = async () => {
+    const text = await Clipboard.getStringAsync();
+    setCopiedText(text);
+  };
   return (
     <SafeAreaView style={{backgroundColor: 'transparent'}}>
       <StatusBar barStyle={'light-content'} />
@@ -127,6 +146,16 @@ const Index = () => {
               <Text style={styles.font}>视频</Text>
             </View>
           </TouchableWithoutFeedback>
+
+          <TouchableWithoutFeedback
+            onPress={() => {
+              copyToClipboard();
+            }}>
+            <View style={styles.btn}>
+              <Text style={styles.font}>剪贴板</Text>
+            </View>
+          </TouchableWithoutFeedback>
+
           <View style={styles.btn}>
             <Text style={styles.font}>动画</Text>
           </View>
