@@ -87,6 +87,14 @@ android {
         versionName "1.0"
     }
     signingConfigs {
+        release {
+            if (project.hasProperty('MYAPP_RELEASE_STORE_FILE')) {
+                storeFile file(MYAPP_RELEASE_STORE_FILE)
+                storePassword MYAPP_RELEASE_STORE_PASSWORD
+                keyAlias MYAPP_RELEASE_KEY_ALIAS
+                keyPassword MYAPP_RELEASE_KEY_PASSWORD
+            }
+        }
         debug {
             storeFile file('debug.keystore')
             storePassword 'android'
@@ -94,6 +102,25 @@ android {
             keyPassword 'android'
         }
     }
+
+ flavorDimensions "applicationId"
+     productFlavors {
+        aiscan {
+         dimension "applicationId"
+            versionCode 2
+            versionName "2.0"
+             minSdkVersion 26
+           applicationId "aiscan.com"
+        }
+        miaomiao {
+         dimension "applicationId"
+            versionCode 3
+             versionName "3.0"
+             minSdkVersion 26
+             applicationId "miaomiao.com"
+        }
+
+        }
     buildTypes {
         debug {
             signingConfig signingConfigs.debug
@@ -126,3 +153,6 @@ dependencies {
 }
 
 apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)
+
+
+apply from: project(':react-native-config').projectDir.getPath() +"/dotenv.gradle"

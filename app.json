@@ -1,4 +1,11 @@
 {
   "name": "my_ios_App3",
-  "displayName": "my_ios_App3"
+  "displayName": "my_ios_App3",
+  "expo": {
+    "extra": {
+      "eas": {
+        "projectId": "c96a30e2-836b-4d25-bc3f-4075403fb389"
+      }
+    }
+  }
 }

@@ -156,6 +156,15 @@ const Index = () => {
             </View>
           </TouchableWithoutFeedback>
 
+          <TouchableWithoutFeedback
+            onPress={() => {
+              navigation.navigate('Shadow');
+            }}>
+            <View style={styles.btn}>
+              <Text style={styles.font}>阴影</Text>
+            </View>
+          </TouchableWithoutFeedback>
+
           <View style={styles.btn}>
             <Text style={styles.font}>动画</Text>
           </View>

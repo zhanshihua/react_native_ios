@@ -9,6 +9,7 @@ import ToastCom from '../pages/toast';
 import KeyBoard from '../pages/KeyBoard';
 import DeviceCom from '../pages/device';
 import VideoCom from '../pages/video';
+import ShadowCom from '../pages/shadow';
 
 const router = [
   {
@@ -124,6 +125,18 @@ const router = [
     name: 'Video',
     title: '视频',
     component: VideoCom,
+    options: {
+      headerShown: false,
+      presentation: 'transparentModal',
+      contentStyle: {
+        backgroundColor: 'transparent',
+      },
+    },
+  },
+  {
+    name: 'Shadow',
+    title: '阴影',
+    component: ShadowCom,
     options: {
       headerShown: false,
       presentation: 'transparentModal',
