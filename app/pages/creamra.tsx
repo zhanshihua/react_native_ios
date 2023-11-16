@@ -19,7 +19,6 @@ import {
   TouchableWithoutFeedback,
 } from 'react-native';
 
-import {useNavigation} from '@react-navigation/native';
 import ImagePicker from 'react-native-image-crop-picker';
 import {
   GestureHandlerRootView,
@@ -27,9 +26,16 @@ import {
   TouchableOpacity,
   ScrollView,
 } from 'react-native-gesture-handler';
+import {PermissionsAndroid, Linking} from 'react-native';
 
 const Creamra = () => {
   // console.log(ImagePicker, '---ImagePicker');
+  // const requestCameraPermission = async () => {
+  //   const granted = await PermissionsAndroid.check(
+  //     PermissionsAndroid.PERMISSIONS.CAMERA,
+  //   );
+  //   return granted;
+  // };
   return (
     <GestureHandlerRootView>
       <SafeAreaView style={{backgroundColor: 'transparent'}}>
@@ -45,8 +51,15 @@ const Creamra = () => {
                 .then(res => {
                   console.log(res, '---openCamera');
                 })
-                .catch(err => {
-                  console.log(err, '---openCamera');
+                .catch(async err => {
+                  const granted1 = await PermissionsAndroid.check(
+                    PermissionsAndroid.PERMISSIONS.CAMERA,
+                  );
+                  console.error(granted1, '---PermissionsAndroid');
+                  if (!granted1) {
+                    console.error(Linking, '---Linking');
+                    Linking.openSettings();
+                  }
                 });
             }}>
             <View>

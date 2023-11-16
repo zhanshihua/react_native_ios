@@ -109,8 +109,8 @@ android {
          dimension "applicationId"
             versionCode 2
             versionName "2.0"
-             minSdkVersion 26
-           applicationId "aiscan.com"
+            minSdkVersion 26
+           applicationId "aiscan.com"       
         }
         miaomiao {
          dimension "applicationId"
