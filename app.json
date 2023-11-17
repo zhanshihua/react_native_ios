@@ -6,6 +6,9 @@
       "eas": {
         "projectId": "c96a30e2-836b-4d25-bc3f-4075403fb389"
       }
+    },
+    "autolinking": {
+      "exclude": ["expo-font", "expo-keep-awake"]
     }
   }
 }
