@@ -29,131 +29,57 @@ import {
   TouchableHighlight,
 } from 'react-native-gesture-handler';
 
-const Gesture = () => {
+import Animated, {
+  useSharedValue,
+  useAnimatedStyle,
+} from 'react-native-reanimated';
+import {Gesture, GestureDetector} from 'react-native-gesture-handler';
+
+const GestureCom = () => {
   // console.log(ImagePicker, '---ImagePicker');
+
+  const isPressed = useSharedValue(false);
+  const offset = useSharedValue({x: 0, y: 0});
+
+  const animatedStyles = useAnimatedStyle(() => {
+    return {
+      transform: [{translateX: offset.value.x}, {translateY: offset.value.y}],
+      backgroundColor: isPressed.value ? 'blue' : '#ccc',
+    };
+  });
+
+  const dragGesture = Gesture.Pan()
+    .onBegin(() => {
+      isPressed.value = true;
+    })
+    .onChange(e => {
+      offset.value = {
+        x: e.changeX + offset.value.x,
+        y: e.changeY + offset.value.y,
+      };
+    })
+    .onFinalize(() => {
+      isPressed.value = false;
+    });
+
   return (
     <GestureHandlerRootView>
       <SafeAreaView style={{backgroundColor: 'transparent'}}>
         <StatusBar barStyle={'light-content'} />
 
         <ScrollView>
-          <TouchableWithoutFeedback
-            onPress={() => {
-              // ImagePicker.openCamera({
-              //   cropping: true,
-              // })
-              //   .then(res => {
-              //     console.log(reXs, '---openCamera');
-              //   })
-              //   .catch(err => {
-              //     console.log(err, '---openCamera');
-              //   });
-            }}>
-            <View>
-              <RectButton>
-                <Text style={{padding: 50}}>手势</Text>
-              </RectButton>
-            </View>
-          </TouchableWithoutFeedback>
-          <TouchableOpacity
-            onPress={() => {
-              // ImagePicker.openCamera({
-              //   cropping: true,
-              // })
-              //   .then(res => {
-              //     console.log(res, '---openCamera');
-              //   })
-              //   .catch(err => {
-              //     console.log(err, '---openCamera');
-              //   });
-            }}>
-            <View>
-              <RectButton>
-                <Text style={{padding: 50}}>手势</Text>
-              </RectButton>
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => {
-              // ImagePicker.openCamera({
-              //   cropping: true,
-              // })
-              //   .then(res => {
-              //     console.log(res, '---openCamera');
-              //   })
-              //   .catch(err => {
-              //     console.log(err, '---openCamera');
-              //   });
-            }}>
-            <View>
-              <RectButton>
-                <Text style={{padding: 50}}>手势</Text>
-              </RectButton>
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => {
-              // ImagePicker.openCamera({
-              //   cropping: true,
-              // })
-              //   .then(res => {
-              //     console.log(res, '---openCamera');
-              //   })
-              //   .catch(err => {
-              //     console.log(err, '---openCamera');
-              //   });
-            }}>
-            <View>
-              <RectButton>
-                <Text style={{padding: 50}}>手势</Text>
-              </RectButton>
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => {
-              // ImagePicker.openCamera({
-              //   cropping: true,
-              // })
-              //   .then(res => {
-              //     console.log(res, '---openCamera');
-              //   })
-              //   .catch(err => {
-              //     console.log(err, '---openCamera');
-              //   });
-            }}>
-            <View>
-              <RectButton>
-                <Text style={{padding: 50}}>手势</Text>
-              </RectButton>
-            </View>
-          </TouchableOpacity>
-          <View>
-            <RectButton>
-              <Text style={{padding: 50}}>手势</Text>
-            </RectButton>
-          </View>
-          <View>
-            <RectButton>
-              <Text style={{padding: 50}}>手势</Text>
-            </RectButton>
-          </View>
-
-          <View>
-            <RectButton>
-              <Text style={{padding: 50}}>手势</Text>
-            </RectButton>
-          </View>
-
-          <TouchableHighlight
-            onPressIn={() => {
-              console.log('---TouchableHighlight');
-            }}>
-            <View>
-              <RectButton>
-                <Text style={{padding: 50}}>手势</Text>
-              </RectButton>
-            </View>
-          </TouchableHighlight>
+          <GestureDetector gesture={dragGesture}>
+            <Animated.View
+              style={[
+                {
+                  width: 100,
+                  height: 100,
+                  borderRadius: 100,
+                },
+                animatedStyles,
+              ]}
+            />
+          </GestureDetector>
         </ScrollView>
       </SafeAreaView>
     </GestureHandlerRootView>
@@ -162,4 +88,4 @@ const Gesture = () => {
 
 const styles = StyleSheet.create({});
 
-export default Gesture;
+export default GestureCom;

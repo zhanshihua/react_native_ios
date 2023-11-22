@@ -1,7 +1,7 @@
 import TabNavigator from './TabNavigator';
 import Creamra from '../pages/creamra';
 
-import Gesture from '../pages/gestrue';
+import GestureCom from '../pages/gestrue';
 import RNF from '../pages/RNF';
 import WebViewCom from '../pages/webview';
 import SoundCom from '../pages/sound';
@@ -64,7 +64,7 @@ const router = [
   {
     name: 'Gesture',
     title: '手势',
-    component: Gesture,
+    component: GestureCom,
     options: {
       headerShown: false,
       presentation: 'transparentModal',
